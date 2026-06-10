@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Presentation Practice — Travertines</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #F9F6F1;
+  --surface:  #FFFFFF;
+  --surface2: #F3EFE8;
+  --surface3: #EDE8DF;
+  --stone:    #8C7D6A;
+  --stone2:   #C4B8A5;
+  --stone3:   #E2D9CC;
+  --ink:      #1E1810;
+  --ink2:     #4A3F32;
+  --ink3:     #8C7D6A;
+  --accent:   #C45A1A;
+  --accent2:  #E8834A;
+  --accent3:  #FAE4D5;
+  --accent4:  rgba(196,90,26,0.1);
+  --green:    #3A7A3A;
+  --green-bg: #EBF5EB;
+  --red:      #9A2020;
+  --red-bg:   #FAEAEA;
+  --blue:     #1A4A8A;
+  --blue-bg:  #EAF0FA;
+  --border:   #E2D9CC;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Instrument Sans',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  padding:2.5rem 1rem 5rem;
+  line-height:1.7;
+}
+.page { max-width:800px; margin:0 auto; }
+
+/* ── HEADER ── */
+.hdr {
+  background: var(--ink);
+  border-radius:16px;
+  padding:2.5rem 2.5rem 2rem;
+  margin-bottom:2rem;
+  position:relative;
+  overflow:hidden;
+}
+.hdr::before {
+  content:'';
+  position:absolute; top:0; right:0;
+  width:300px; height:300px;
+  background: radial-gradient(circle at top right, rgba(196,90,26,0.25) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hdr-eyebrow {
+  font-size:11px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--accent2);
+  margin-bottom:0.75rem;
+}
+.hdr h1 {
+  font-family:'Fraunces',serif;
+  font-size:clamp(26px,4.5vw,40px);
+  color:#F9F6F1;
+  line-height:1.15;
+  margin-bottom:0.5rem;
+}
+.hdr h1 em { color:var(--accent2); font-style:italic; }
+.hdr-sub { font-size:14px; color:var(--stone2); margin-bottom:1.5rem; line-height:1.6; }
+.hdr-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.hdr-pill {
+  font-size:11px; font-weight:600; letter-spacing:0.5px;
+  background:rgba(255,255,255,0.08);
+  color:var(--stone2);
+  padding:3px 12px; border-radius:20px;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:1rem; margin-top:0.5rem;
+}
+.section-label::before {
+  content:''; display:block;
+  width:28px; height:2px; background:var(--accent);
+}
+.section-label span {
+  font-size:11px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--accent);
+}
+
+/* ── VOCAB CARD ── */
+.vocab-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.5rem;
+  margin-bottom:1.75rem;
+}
+.vocab-card h2 {
+  font-family:'Fraunces',serif;
+  font-size:18px; color:var(--ink);
+  margin-bottom:0.25rem;
+}
+.vocab-card .desc { font-size:13px; color:var(--ink3); margin-bottom:1.25rem; }
+.vocab-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; }
+.vocab-item {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:0.6rem 0.85rem;
+  font-size:13px;
+}
+.vocab-term { font-weight:700; color:var(--accent); margin-bottom:2px; font-size:13px; }
+.vocab-def  { color:var(--ink2); font-size:12px; line-height:1.5; }
+.vocab-ex   { color:var(--ink3); font-size:11px; font-style:italic; margin-top:2px; }
+
+/* ── PHRASE BANK ── */
+.phrase-bank {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.5rem;
+  margin-bottom:1.75rem;
+}
+.phrase-bank h2 {
+  font-family:'Fraunces',serif;
+  font-size:18px; color:var(--ink);
+  margin-bottom:0.25rem;
+}
+.phrase-bank .desc { font-size:13px; color:var(--ink3); margin-bottom:1.25rem; }
+.phrase-section { margin-bottom:1rem; }
+.phrase-section:last-child { margin-bottom:0; }
+.phrase-section h3 {
+  font-size:11px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--stone);
+  margin-bottom:0.5rem;
+  padding-bottom:3px; border-bottom:1px solid var(--border);
+}
+.phrases { display:flex; flex-wrap:wrap; gap:6px; }
+.ph {
+  background:var(--accent3);
+  border:1px solid rgba(196,90,26,0.25);
+  color:var(--accent);
+  font-size:12px; font-weight:600;
+  padding:3px 11px; border-radius:6px;
+  cursor:default;
+}
+
+/* ── EXERCISE CARD ── */
+.ex-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-bottom:1.75rem;
+  overflow:hidden;
+}
+.ex-card-hdr {
+  padding:1rem 1.5rem;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:1rem;
+  background:var(--surface2);
+}
+.ex-num {
+  font-family:'Fraunces',serif;
+  font-size:24px; color:var(--accent);
+  min-width:28px; line-height:1;
+}
+.ex-card-hdr-text h2 { font-size:15px; font-weight:600; color:var(--ink); }
+.ex-card-hdr-text p  { font-size:12px; color:var(--ink3); margin-top:2px; }
+.ctag {
+  margin-left:auto; font-size:11px; font-weight:700;
+  letter-spacing:0.5px; padding:3px 10px; border-radius:4px; flex-shrink:0;
+}
+.tag-g { background:#EAF0FA; color:var(--blue); }
+.tag-v { background:var(--green-bg); color:var(--green); }
+.tag-m { background:var(--accent3); color:var(--accent); }
+.tag-s { background:#F0EBF8; color:#5A1A8A; }
+.tag-p { background:#FFF5E0; color:#8A5A00; }
+
+.ex-card-body { padding:1.4rem 1.5rem; }
+.instr { font-size:13px; color:var(--ink3); font-style:italic; margin-bottom:1.1rem; line-height:1.6; }
+
+/* ── ITEMS ── */
+.ex-list { display:flex; flex-direction:column; gap:0.55rem; }
+.ex-item {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:0.65rem 1rem;
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  font-size:14px; line-height:1.9;
+  transition:border-color 0.2s;
+}
+.ex-item:focus-within { border-color:var(--accent2); }
+.ex-item.col { flex-direction:column; align-items:flex-start; }
+.ex-ltr { font-size:12px; font-weight:700; color:var(--accent); min-width:18px; flex-shrink:0; }
+.ex-body { flex:1; display:flex; align-items:center; flex-wrap:wrap; gap:4px; }
+.hint { font-size:12px; color:var(--accent); font-style:italic; font-weight:600; white-space:nowrap; }
+
+/* ── INPUTS ── */
+input[type="text"] {
+  border:none; border-bottom:2px solid var(--accent);
+  background:transparent;
+  font-family:'Instrument Sans',sans-serif;
+  font-size:14px; color:var(--ink);
+  padding:2px 5px; min-width:150px; outline:none;
+  transition:all 0.2s;
+}
+input[type="text"]:focus {
+  border-bottom-color:var(--accent);
+  background:var(--accent4);
+  border-radius:3px 3px 0 0;
+}
+input[type="text"].sm  { min-width:90px; }
+input[type="text"].md  { min-width:160px; }
+input[type="text"].lg  { min-width:220px; }
+input[type="text"].xl  { min-width:300px; }
+input[type="text"].full{ width:100%; min-width:unset; margin-top:5px; }
+input[type="text"].ok  { border-bottom-color:var(--green)!important; background:var(--green-bg)!important; border-radius:3px 3px 0 0; }
+input[type="text"].err { border-bottom-color:var(--red)!important; background:var(--red-bg)!important; border-radius:3px 3px 0 0; }
+
+textarea {
+  width:100%; border:1px solid var(--border); border-radius:8px;
+  font-family:'Instrument Sans',sans-serif; font-size:14px; color:var(--ink);
+  padding:0.7rem 1rem; resize:vertical; min-height:72px; outline:none;
+  margin-top:5px; transition:border-color 0.2s; background:var(--surface2); line-height:1.7;
+}
+textarea:focus { border-color:var(--accent); background:white; }
+
+/* ── RADIO ── */
+.mc-opts { display:flex; gap:1.1rem; flex-wrap:wrap; padding-left:24px; margin-top:7px; }
+.mc-opt { display:flex; align-items:center; gap:5px; font-size:14px; cursor:pointer; }
+.mc-opt input { accent-color:var(--accent); width:15px; height:15px; }
+
+/* ── WORD BANK ── */
+.wb {
+  display:flex; flex-wrap:wrap; gap:6px;
+  padding:0.65rem 0.9rem;
+  background:var(--accent3); border:1px dashed rgba(196,90,26,0.35);
+  border-radius:8px; margin-bottom:1rem;
+}
+.wb-label { font-size:11px; font-weight:700; color:var(--accent); width:100%; margin-bottom:3px; letter-spacing:0.5px; text-transform:uppercase; }
+.pill {
+  background:white; border:1px solid rgba(196,90,26,0.3);
+  color:var(--accent); font-size:12px; font-weight:600;
+  padding:2px 11px; border-radius:20px;
+}
+
+/* ── TRANSCRIPT HIGHLIGHT ── */
+.transcript {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-left:4px solid var(--accent);
+  border-radius:0 10px 10px 0;
+  padding:1.25rem 1.4rem;
+  font-size:14px; line-height:2;
+  margin-bottom:1rem; color:var(--ink2);
+}
+.transcript strong { color:var(--ink); }
+.transcript mark {
+  background:var(--accent3); color:var(--accent);
+  padding:1px 3px; border-radius:3px; font-weight:600;
+}
+.blank-span {
+  display:inline-block;
+  border-bottom:2px solid var(--accent);
+  min-width:120px; height:17px;
+  vertical-align:bottom; margin:0 3px;
+}
+
+/* ── SCENARIO ── */
+.scenario {
+  background:var(--surface2);
+  border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0;
+  padding:1rem 1.25rem;
+  margin-bottom:0.75rem;
+  font-size:14px; line-height:1.8; color:var(--ink2);
+}
+.scenario strong { color:var(--ink); }
+
+/* ── BTN ── */
+.btn-check {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--accent); color:white;
+  border:none; border-radius:7px;
+  padding:7px 18px; font-size:13px; font-weight:600;
+  cursor:pointer; margin-top:1rem;
+  font-family:'Instrument Sans',sans-serif;
+  transition:background 0.15s,transform 0.1s;
+}
+.btn-check:hover { background:var(--ink); }
+.btn-check:active { transform:scale(0.97); }
+
+.score-bar {
+  display:none; margin-top:0.6rem;
+  padding:0.5rem 1rem; border-radius:7px;
+  font-size:13px; font-weight:600;
+}
+.score-bar.good    { background:var(--green-bg); border:1px solid #97C48A; color:var(--green); }
+.score-bar.partial { background:#FFF8E6; border:1px solid #E8C84A; color:#7A5500; }
+.score-bar.retry   { background:var(--red-bg); border:1px solid #E8A0A0; color:var(--red); }
+
+/* ── SPEAKING BLOCKS ── */
+.speaking-wrap {
+  background:var(--ink);
+  border-radius:16px;
+  padding:2rem;
+  margin-bottom:1.75rem;
+}
+.speaking-wrap h2 {
+  font-family:'Fraunces',serif;
+  font-size:22px; color:#F9F6F1;
+  margin-bottom:0.3rem;
+}
+.speaking-wrap .sub { font-size:13px; color:var(--stone2); margin-bottom:1.5rem; }
+
+.speak-blocks { display:flex; flex-direction:column; gap:1rem; }
+
+.speak-block {
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:1.25rem 1.4rem;
+  transition:border-color 0.2s;
+}
+.speak-block:focus-within { border-color:rgba(196,90,26,0.5); }
+
+.sb-top { display:flex; align-items:flex-start; gap:1rem; margin-bottom:0.85rem; }
+.sb-num {
+  font-family:'Fraunces',serif;
+  font-size:32px; color:var(--accent2);
+  line-height:1; min-width:36px;
+}
+.sb-content { flex:1; }
+.sb-stage {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--accent2);
+  margin-bottom:4px;
+}
+.sb-prompt {
+  font-size:14px; color:#E8E2DA;
+  line-height:1.65;
+}
+.sb-tip {
+  font-size:12px; color:var(--stone2);
+  font-style:italic; margin-top:6px;
+  line-height:1.5;
+}
+.sb-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:0.85rem; }
+.sb-tag {
+  font-size:11px; font-weight:700;
+  background:rgba(196,90,26,0.2);
+  color:var(--accent2);
+  border:1px solid rgba(196,90,26,0.3);
+  padding:2px 9px; border-radius:4px;
+}
+
+/* TIMER */
+.timer-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.t-display {
+  font-family:'Fraunces',serif;
+  font-size:30px; color:var(--accent2);
+  min-width:60px; letter-spacing:1px;
+  transition:color 0.3s;
+}
+.t-display.danger { color:#E87070; }
+.t-display.done   { color:#70C870; }
+.btn-t {
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  color:var(--stone2); border-radius:6px;
+  padding:5px 14px; font-size:12px; font-weight:600;
+  cursor:pointer; font-family:'Instrument Sans',sans-serif;
+  transition:all 0.15s;
+}
+.btn-t:hover { border-color:var(--accent2); color:var(--accent2); }
+.btn-t.on { background:rgba(196,90,26,0.15); border-color:var(--accent); color:var(--accent2); }
+.bar-wrap {
+  width:100%; height:3px; background:rgba(255,255,255,0.07);
+  border-radius:2px; overflow:hidden; margin-top:8px;
+}
+.bar-fill {
+  height:100%; background:var(--accent);
+  border-radius:2px; transition:width 1s linear, background 0.3s;
+  width:100%;
+}
+.notes-wrap { margin-top:0.85rem; }
+.notes-wrap label {
+  font-size:11px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; color:var(--stone);
+  display:block; margin-bottom:4px;
+}
+.notes-wrap textarea {
+  background:rgba(255,255,255,0.04);
+  border-color:rgba(255,255,255,0.08);
+  color:#E8E2DA;
+}
+.notes-wrap textarea:focus { background:rgba(255,255,255,0.07); border-color:var(--accent); }
+.notes-wrap textarea::placeholder { color:var(--stone); }
+
+/* ── Q&A SECTION ── */
+.qa-wrap {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.5rem;
+  margin-bottom:1.75rem;
+}
+.qa-wrap h2 {
+  font-family:'Fraunces',serif;
+  font-size:18px; color:var(--ink); margin-bottom:0.25rem;
+}
+.qa-wrap .desc { font-size:13px; color:var(--ink3); margin-bottom:1.25rem; }
+.qa-item {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1rem 1.25rem;
+  margin-bottom:0.75rem;
+}
+.qa-q {
+  font-size:14px; font-weight:600; color:var(--ink);
+  margin-bottom:6px; line-height:1.55;
+}
+.qa-q::before { content:'Q: '; color:var(--accent); }
+.qa-hint {
+  font-size:12px; color:var(--ink3); font-style:italic;
+  margin-bottom:8px;
+}
+.qa-item textarea { min-height:60px; }
+
+/* ── ANSWER KEY ── */
+.answer-key {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.75rem; margin-top:2rem;
+}
+.answer-key > h2 {
+  font-family:'Fraunces',serif;
+  font-size:18px; color:var(--ink);
+  margin-bottom:1.25rem; padding-bottom:0.6rem;
+  border-bottom:1px solid var(--border);
+}
+.ak-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+.ak-sec h4 {
+  font-size:11px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--accent);
+  margin-bottom:0.6rem;
+}
+.ak-sec ol, .ak-sec ul { padding-left:1.1rem; font-size:13px; color:var(--ink2); line-height:2.1; }
+.ak-sec ol li strong { color:var(--ink); }
+.ak-note { font-size:12px; color:var(--ink3); font-style:italic; margin-top:4px; }
+
+.divider { border:none; border-top:1px solid var(--border); margin:1.25rem 0; }
+
+@media (max-width:580px){
+  .vocab-grid, .ak-grid { grid-template-columns:1fr; }
+  .ex-card-body, .ex-card-hdr { padding:1rem 1rem; }
+  .hdr { padding:1.75rem 1.25rem 1.5rem; }
+  input[type="text"] { min-width:110px; }
+}
+@media print {
+  .btn-check, .btn-t { display:none!important; }
+  .score-bar { display:none!important; }
+  .answer-key { display:none; }
+  body { background:white; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ── HEADER ── -->
+<div class="hdr">
+  <div class="hdr-eyebrow">Scientific Presentation Practice</div>
+  <h1>Travertines from the<br><em>Pre-Salt of Brazil</em></h1>
+  <p class="hdr-sub">Language exercises and speaking blocks to help you prepare and deliver your presentation confidently at the conference in the United States.</p>
+  <div class="hdr-pills">
+    <span class="hdr-pill">Level B1→B2</span>
+    <span class="hdr-pill">Scientific English</span>
+    <span class="hdr-pill">Vocabulary · Grammar · Speaking · Q&amp;A</span>
+  </div>
+</div>
+
+<!-- ── KEY VOCABULARY ── -->
+<div class="section-label"><span>Reference</span></div>
+<div class="vocab-card">
+  <h2>Key Vocabulary for Your Presentation</h2>
+  <p class="desc">Learn and review these terms before practising. They will appear throughout the exercises.</p>
+  <div class="vocab-grid">
+    <div class="vocab-item">
+      <div class="vocab-term">travertine</div>
+      <div class="vocab-def">A type of sedimentary rock formed by the precipitation of calcium carbonate from hot springs or geothermal waters.</div>
+      <div class="vocab-ex">"Travertines are widely studied in carbonate reservoir research."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">pre-salt layer</div>
+      <div class="vocab-def">A geological formation below a thick layer of salt, where significant oil and gas reservoirs are found in Brazil.</div>
+      <div class="vocab-ex">"The Brazilian pre-salt layer holds some of the largest reserves in the world."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">carbonate rock</div>
+      <div class="vocab-def">A type of sedimentary rock composed mainly of carbonate minerals such as calcite or dolomite.</div>
+      <div class="vocab-ex">"Limestone and travertine are both examples of carbonate rocks."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">conceptual model</div>
+      <div class="vocab-def">A theoretical framework that explains how a geological system works or how a rock formation was created.</div>
+      <div class="vocab-ex">"Several conceptual models have been proposed for travertine formation."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">precipitation (geology)</div>
+      <div class="vocab-def">The process by which dissolved minerals crystallise and settle out of a fluid, forming rock layers.</div>
+      <div class="vocab-ex">"Travertines are formed through the precipitation of CaCO₃."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">reservoir</div>
+      <div class="vocab-def">A porous rock formation that stores oil, gas, or water underground.</div>
+      <div class="vocab-ex">"Travertines can act as natural reservoirs due to their porosity."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">porosity / permeability</div>
+      <div class="vocab-def">Porosity = the amount of empty space in a rock; Permeability = how easily fluids move through it.</div>
+      <div class="vocab-ex">"High porosity does not always mean high permeability."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">analogue (geological)</div>
+      <div class="vocab-def">A surface or accessible geological feature that is similar to a subsurface formation and used as a reference.</div>
+      <div class="vocab-ex">"Roman travertines are used as analogues for pre-salt formations."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">diagenesis</div>
+      <div class="vocab-def">The physical and chemical changes that occur in sediment after deposition and during lithification.</div>
+      <div class="vocab-ex">"Diagenetic processes can alter the original porosity of travertines."</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">hot spring / geothermal fluid</div>
+      <div class="vocab-def">Heated water that rises from underground, often carrying dissolved minerals that form travertine deposits.</div>
+      <div class="vocab-ex">"Travertines in Tivoli (Rome) were formed around geothermal springs."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PHRASE BANK ── -->
+<div class="section-label"><span>Language Tools</span></div>
+<div class="phrase-bank">
+  <h2>Presentation Phrase Bank</h2>
+  <p class="desc">Use these phrases in your speaking exercises. They are the building blocks of academic oral presentations.</p>
+
+  <div class="phrase-section">
+    <h3>Opening &amp; introducing yourself</h3>
+    <div class="phrases">
+      <span class="ph">Good morning/afternoon, everyone.</span>
+      <span class="ph">My name is ___ and I'm a geologist from Brazil.</span>
+      <span class="ph">Today I'd like to present my research on…</span>
+      <span class="ph">The focus of this study is…</span>
+      <span class="ph">This presentation covers three main points…</span>
+    </div>
+  </div>
+
+  <div class="phrase-section">
+    <h3>Defining &amp; explaining concepts</h3>
+    <div class="phrases">
+      <span class="ph">Travertines are a type of…</span>
+      <span class="ph">In simple terms, this means…</span>
+      <span class="ph">Unlike limestone, travertine…</span>
+      <span class="ph">The key difference between X and Y is…</span>
+      <span class="ph">What distinguishes travertines from other carbonates is…</span>
+      <span class="ph">This can be defined as…</span>
+    </div>
+  </div>
+
+  <div class="phrase-section">
+    <h3>Presenting data &amp; findings</h3>
+    <div class="phrases">
+      <span class="ph">Our results show that…</span>
+      <span class="ph">As you can see in this slide…</span>
+      <span class="ph">The data suggests that…</span>
+      <span class="ph">This figure illustrates…</span>
+      <span class="ph">We observed that…</span>
+      <span class="ph">It is worth noting that…</span>
+      <span class="ph">Interestingly, we found…</span>
+    </div>
+  </div>
+
+  <div class="phrase-section">
+    <h3>Comparing &amp; contrasting</h3>
+    <div class="phrases">
+      <span class="ph">Compared to other carbonate rocks…</span>
+      <span class="ph">Roman travertines are the most studied analogue…</span>
+      <span class="ph">The pre-salt travertines are more complex than…</span>
+      <span class="ph">While X tends to…, Y is more likely to…</span>
+      <span class="ph">In contrast to limestone…</span>
+      <span class="ph">The most significant difference is…</span>
+    </div>
+  </div>
+
+  <div class="phrase-section">
+    <h3>Signposting (moving between sections)</h3>
+    <div class="phrases">
+      <span class="ph">Now I'd like to move on to…</span>
+      <span class="ph">Let me now explain the conceptual model…</span>
+      <span class="ph">As I mentioned earlier…</span>
+      <span class="ph">This brings me to my next point…</span>
+      <span class="ph">To summarise this section…</span>
+      <span class="ph">Before I continue, let me clarify…</span>
+    </div>
+  </div>
+
+  <div class="phrase-section">
+    <h3>Concluding</h3>
+    <div class="phrases">
+      <span class="ph">To conclude…</span>
+      <span class="ph">In summary, this study demonstrates…</span>
+      <span class="ph">The main takeaway from this research is…</span>
+      <span class="ph">These findings contribute to our understanding of…</span>
+      <span class="ph">Further research is needed to…</span>
+      <span class="ph">Thank you for your attention. I'm happy to take questions.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ EXERCISE 1 — VOCABULARY ═══════════ -->
+<div class="section-label"><span>Exercises</span></div>
+
+<div class="ex-card">
+  <div class="ex-card-hdr">
+    <div class="ex-num">1</div>
+    <div class="ex-card-hdr-text">
+      <h2>Match the term to its definition</h2>
+      <p>Connect key vocabulary to the correct explanation</p>
+    </div>
+    <span class="ctag tag-v">Vocabulary</span>
+  </div>
+  <div class="ex-card-body">
+    <p class="instr">Write the correct letter (A–G) next to each definition below.</p>
+    <div class="wb">
+      <span class="wb-label">Terms</span>
+      <span class="pill">A. travertine</span>
+      <span class="pill">B. pre-salt layer</span>
+      <span class="pill">C. conceptual model</span>
+      <span class="pill">D. porosity</span>
+      <span class="pill">E. analogue</span>
+      <span class="pill">F. diagenesis</span>
+      <span class="pill">G. reservoir</span>
+    </div>
+    <div class="ex-list">
+      <div class="ex-item">
+        <span class="ex-ltr">1</span>
+        <div class="ex-body">A porous rock body that stores hydrocarbons or water underground. → <input type="text" id="m1" class="sm" placeholder="letter"></div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-ltr">2</span>
+        <div class="ex-body">Changes that happen to sediment after it is deposited, altering its structure and composition. → <input type="text" id="m2" class="sm" placeholder="letter"></div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-ltr">3</span>
+        <div class="ex-body">A theoretical framework used to explain how a geological formation was created. → <input type="text" id="m3" class="sm" placeholder="letter"></div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-ltr">4</span>
+        <div class="ex-body">A sedimentary rock formed by calcium carbonate precipitation from hot spring waters. → <input type="text" id="m4" class="sm" placeholder="letter"></div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-ltr">5</span>
+        <div class="ex-body">The percentage of empty space (pores) in a rock formation. → <input type="text" id="m5" class="sm" placeholder="letter"></div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-ltr">6</span>
+        <div class="ex-body">A surface deposit used as a reference for studying similar subsurface formations. → <input type="text" id="m6" class="sm" placeholder="letter"></div>
+      </div>
+      <div class="ex-item">
+        <span class="ex-ltr">7</span>
+        <div class="ex-body">A geological zone located below a salt layer, known for significant oil and gas reserves in Brazil. → <input type="text" id="m7" class="sm" placeholder="letter"></div>
+      </div>
+    </div>
+    <button class="btn-check" onclick="checkEx1()">Check answers ✓</button>
+    <div id="sc1" class="score-bar"></div>
+  </div>
+</div>
+
+<!-- ═══════════ EXERCISE 2 — GAP FILL ABSTRACT ═══════════ -->
+<div class="ex-card">
+  <div class="ex-card-hdr">
+    <div class="ex-num">2</div>
+    <div class="ex-card-hdr-text">
+      <h2>Complete the presentation abstract</h2>
+      <p>Fill in the gaps with the correct word or phrase</p>
+    </div>
+    <span class="ctag tag-g">Grammar + Vocabulary</span>
+  </div>
+  <div class="ex-card-body">
+    <p class="instr">Use the words in the word bank to complete this abstract. You may need to change the form of some words.</p>
+    <div class="wb">
+      <span class="wb-label">Word bank</span>
+      <span class="pill">travertines</span>
+      <span class="pill">carbonate rocks</span>
+      <span class="pill">pre-salt</span>
+      <span class="pill">analogue</span>
+      <span class="pill">conceptual models</span>
+      <span class="pill">distinguish</span>
+      <span class="pill">porosity</span>
+      <span class="pill">precipitation</span>
+      <span class="pill">reservoirs</span>
+      <span class="pill">geothermal</span>
+    </div>
+    <div class="transcript">
+      <p>This study presents an analysis of <input type="text" id="g1" class="md" placeholder="..."> found in the Brazilian <input type="text" id="g2" class="md" placeholder="..."> basin. These rocks belong to the broader family of <input type="text" id="g3" class="lg" placeholder="...">, but what <input type="text" id="g4" class="md" placeholder="..."> them is their origin: they are formed through the <input type="text" id="g5" class="md" placeholder="..."> of calcium carbonate from <input type="text" id="g6" class="md" placeholder="..."> fluids.</p>
+      <br>
+      <p>The most well-known surface occurrence of travertines is found in Rome, Italy, making it a key <input type="text" id="g7" class="md" placeholder="..."> for subsurface studies. The goal of this research is to propose updated <input type="text" id="g8" class="lg" placeholder="..."> for travertine formation and to evaluate their potential as hydrocarbon <input type="text" id="g9" class="md" placeholder="...">, considering factors such as <input type="text" id="g10" class="md" placeholder="..."> and permeability.</p>
+    </div>
+    <button class="btn-check" onclick="checkEx2()">Check answers ✓</button>
+    <div id="sc2" class="score-bar"></div>
+  </div>
+</div>
+
+<!-- ═══════════ EXERCISE 3 — PRESENTATION LANGUAGE ═══════════ -->
+<div class="ex-card">
+  <div class="ex-card-hdr">
+    <div class="ex-num">3</div>
+    <div class="ex-card-hdr-text">
+      <h2>Choose the best presentation phrase</h2>
+      <p>Select the most appropriate phrase for each moment in the presentation</p>
+    </div>
+    <span class="ctag tag-p">Presentation Language</span>
+  </div>
+  <div class="ex-card-body">
+    <p class="instr">Which phrase fits the situation best? Think about the function of each moment.</p>
+    <div class="ex-list">
+
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;">
+          <span class="ex-ltr">1</span>
+          <span style="font-size:14px;">You want to <strong>start your presentation</strong> and tell the audience what you will cover.</span>
+        </div>
+        <div class="mc-opts">
+          <label class="mc-opt"><input type="radio" name="p1" value="a"> a) "Thank you for your attention. I'm happy to take questions."</label>
+          <label class="mc-opt"><input type="radio" name="p1" value="b"> b) "Today I'd like to present my research on travertines from the Brazilian pre-salt basin. This talk is divided into three parts."</label>
+          <label class="mc-opt"><input type="radio" name="p1" value="c"> c) "As I mentioned earlier, travertines are different from limestone."</label>
+        </div>
+      </div>
+
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;">
+          <span class="ex-ltr">2</span>
+          <span style="font-size:14px;">You want to <strong>explain what a travertine is</strong> to an audience that may not be familiar with the term.</span>
+        </div>
+        <div class="mc-opts">
+          <label class="mc-opt"><input type="radio" name="p2" value="a"> a) "Our results show that travertines have high porosity."</label>
+          <label class="mc-opt"><input type="radio" name="p2" value="b"> b) "This brings me to my next point about Roman analogues."</label>
+          <label class="mc-opt"><input type="radio" name="p2" value="c"> c) "Travertines are a type of sedimentary rock. In simple terms, they form when calcium carbonate precipitates from hot spring water."</label>
+        </div>
+      </div>
+
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;">
+          <span class="ex-ltr">3</span>
+          <span style="font-size:14px;">You want to <strong>move from the background section to your findings</strong>.</span>
+        </div>
+        <div class="mc-opts">
+          <label class="mc-opt"><input type="radio" name="p3" value="a"> a) "Now I'd like to move on to our main findings and the conceptual models we propose."</label>
+          <label class="mc-opt"><input type="radio" name="p3" value="b"> b) "Good morning, everyone. My name is Ana and I'm a geologist from Brazil."</label>
+          <label class="mc-opt"><input type="radio" name="p3" value="c"> c) "Further research is needed to confirm these results."</label>
+        </div>
+      </div>
+
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;">
+          <span class="ex-ltr">4</span>
+          <span style="font-size:14px;">You want to <strong>highlight an interesting or unexpected finding</strong>.</span>
+        </div>
+        <div class="mc-opts">
+          <label class="mc-opt"><input type="radio" name="p4" value="a"> a) "To summarise this section, travertines differ from limestone in three key ways."</label>
+          <label class="mc-opt"><input type="radio" name="p4" value="b"> b) "Interestingly, we found that some pre-salt travertines show a much higher porosity than their Roman analogues."</label>
+          <label class="mc-opt"><input type="radio" name="p4" value="c"> c) "The key difference between X and Y is their origin."</label>
+        </div>
+      </div>
+
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;">
+          <span class="ex-ltr">5</span>
+          <span style="font-size:14px;">You are <strong>finishing your presentation</strong> and want to leave the audience with the main message.</span>
+        </div>
+        <div class="mc-opts">
+          <label class="mc-opt"><input type="radio" name="p5" value="a"> a) "In summary, this study demonstrates that pre-salt travertines are a promising reservoir target that deserves further investigation."</label>
+          <label class="mc-opt"><input type="radio" name="p5" value="b"> b) "Let me now explain the conceptual model in more detail."</label>
+          <label class="mc-opt"><input type="radio" name="p5" value="c"> c) "As you can see in this slide, the data supports our hypothesis."</label>
+        </div>
+      </div>
+
+    </div>
+    <button class="btn-check" onclick="checkEx3()">Check answers ✓</button>
+    <div id="sc3" class="score-bar"></div>
+  </div>
+</div>
+
+<!-- ═══════════ EXERCISE 4 — REWRITE ═══════════ -->
+<div class="ex-card">
+  <div class="ex-card-hdr">
+    <div class="ex-num">4</div>
+    <div class="ex-card-hdr-text">
+      <h2>Rewrite for an academic audience</h2>
+      <p>Make these sentences more appropriate for a scientific presentation</p>
+    </div>
+    <span class="ctag tag-m">Language</span>
+  </div>
+  <div class="ex-card-body">
+    <p class="instr">These sentences are too informal or unclear for a conference presentation. Rewrite them using the phrase bank and the vocabulary you've studied. Keep the same meaning.</p>
+    <div class="ex-list" style="gap:0.75rem;">
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;"><span class="ex-ltr">1</span>
+        <span style="font-size:14px;color:var(--ink2);">❌ "Travertines are rocks that come from hot water with minerals."</span></div>
+        <textarea id="rw1" placeholder="Travertines are a type of sedimentary rock formed by..."></textarea>
+      </div>
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;"><span class="ex-ltr">2</span>
+        <span style="font-size:14px;color:var(--ink2);">❌ "Travertines and limestone are different."</span></div>
+        <textarea id="rw2" placeholder="What distinguishes travertines from other carbonate rocks is..."></textarea>
+      </div>
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;"><span class="ex-ltr">3</span>
+        <span style="font-size:14px;color:var(--ink2);">❌ "There are a lot of travertines in Rome and we used them to understand the ones in Brazil."</span></div>
+        <textarea id="rw3" placeholder="Roman travertines represent the most... and were used as analogues for..."></textarea>
+      </div>
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;"><span class="ex-ltr">4</span>
+        <span style="font-size:14px;color:var(--ink2);">❌ "We think the pre-salt travertines could be used to store oil."</span></div>
+        <textarea id="rw4" placeholder="Our findings suggest that pre-salt travertines could represent..."></textarea>
+      </div>
+      <div class="ex-item col">
+        <div style="display:flex;gap:8px;align-items:flex-start;width:100%;"><span class="ex-ltr">5</span>
+        <span style="font-size:14px;color:var(--ink2);">❌ "We need to do more studies to be sure."</span></div>
+        <textarea id="rw5" placeholder="Further research is needed to..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SPEAKING BLOCKS ═══════════ -->
+<div class="section-label"><span>Speaking Practice</span></div>
+<div class="speaking-wrap">
+  <h2>Presentation Speaking Blocks</h2>
+  <p class="sub">Each block covers a different part of your presentation. Press START, speak for the full time without stopping. Write notes first if needed.</p>
+
+  <div class="speak-blocks">
+
+    <div class="speak-block">
+      <div class="sb-top">
+        <div class="sb-num">01</div>
+        <div class="sb-content">
+          <div class="sb-stage">Opening — 60 seconds</div>
+          <div class="sb-prompt">Introduce yourself and your presentation. Say your name, your institution, and the topic. Tell the audience what the three main sections of your talk will be and why this research matters.</div>
+          <div class="sb-tip">💡 Tip: Make eye contact with the audience from the first sentence. Don't read from your slides.</div>
+        </div>
+      </div>
+      <div class="sb-tags"><span class="sb-tag">Good morning/afternoon</span><span class="sb-tag">My name is…</span><span class="sb-tag">Today I'd like to…</span><span class="sb-tag">This talk is divided into…</span></div>
+      <div class="timer-row"><div class="t-display" id="td1">1:00</div>
+        <button class="btn-t" onclick="startT(1,60)">▶ Start</button>
+        <button class="btn-t" onclick="resetT(1,60)">↺ Reset</button>
+      </div>
+      <div class="bar-wrap"><div class="bar-fill" id="tb1"></div></div>
+      <div class="notes-wrap"><label>Notes</label><textarea placeholder="Key words: your name, institution, 3 sections..."></textarea></div>
+    </div>
+
+    <div class="speak-block">
+      <div class="sb-top">
+        <div class="sb-num">02</div>
+        <div class="sb-content">
+          <div class="sb-stage">Defining travertines — 90 seconds</div>
+          <div class="sb-prompt">Explain what travertines are to an international audience. Define them clearly, explain how they form, and explain the difference between travertines and other carbonate rocks like limestone. Use at least one comparison.</div>
+          <div class="sb-tip">💡 Tip: Start with a simple definition, then add detail. Use "In simple terms…" and "What distinguishes them is…"</div>
+        </div>
+      </div>
+      <div class="sb-tags"><span class="sb-tag">Travertines are a type of…</span><span class="sb-tag">Unlike limestone…</span><span class="sb-tag">The key difference is…</span><span class="sb-tag">They form when…</span></div>
+      <div class="timer-row"><div class="t-display" id="td2">1:30</div>
+        <button class="btn-t" onclick="startT(2,90)">▶ Start</button>
+        <button class="btn-t" onclick="resetT(2,90)">↺ Reset</button>
+      </div>
+      <div class="bar-wrap"><div class="bar-fill" id="tb2"></div></div>
+      <div class="notes-wrap"><label>Notes</label><textarea placeholder="Key words: sedimentary, CaCO₃, hot springs, precipitation, porosity..."></textarea></div>
+    </div>
+
+    <div class="speak-block">
+      <div class="sb-top">
+        <div class="sb-num">03</div>
+        <div class="sb-content">
+          <div class="sb-stage">Roman travertines as analogues — 90 seconds</div>
+          <div class="sb-prompt">Explain why Roman travertines are the most studied occurrence in the world and why they are important for your research. What makes them a good analogue for the Brazilian pre-salt? Compare them to the pre-salt travertines — what is similar and what is different?</div>
+          <div class="sb-tip">💡 Tip: Use comparatives and superlatives: "Roman travertines are the most studied… / They are more accessible than…"</div>
+        </div>
+      </div>
+      <div class="sb-tags"><span class="sb-tag">The most well-known…</span><span class="sb-tag">They serve as analogues for…</span><span class="sb-tag">Compared to…</span><span class="sb-tag">One key similarity is…</span><span class="sb-tag">However, they differ in…</span></div>
+      <div class="timer-row"><div class="t-display" id="td3">1:30</div>
+        <button class="btn-t" onclick="startT(3,90)">▶ Start</button>
+        <button class="btn-t" onclick="resetT(3,90)">↺ Reset</button>
+      </div>
+      <div class="bar-wrap"><div class="bar-fill" id="tb3"></div></div>
+      <div class="notes-wrap"><label>Notes</label><textarea placeholder="Key words: Tivoli, accessible, surface analogue, similar formation process..."></textarea></div>
+    </div>
+
+    <div class="speak-block">
+      <div class="sb-top">
+        <div class="sb-num">04</div>
+        <div class="sb-content">
+          <div class="sb-stage">Conceptual models — 90 seconds</div>
+          <div class="sb-prompt">Explain the conceptual models your research proposes for travertine formation in the pre-salt. What are the main ideas? Why are these models important for understanding the reservoirs? What makes your model different from or better than previous models?</div>
+          <div class="sb-tip">💡 Tip: Use: "Our model proposes that… / Based on our data… / This is significant because…"</div>
+        </div>
+      </div>
+      <div class="sb-tags"><span class="sb-tag">Our model proposes…</span><span class="sb-tag">Based on our data…</span><span class="sb-tag">This suggests that…</span><span class="sb-tag">Previous studies assumed…</span><span class="sb-tag">However, our findings show…</span></div>
+      <div class="timer-row"><div class="t-display" id="td4">1:30</div>
+        <button class="btn-t" onclick="startT(4,90)">▶ Start</button>
+        <button class="btn-t" onclick="resetT(4,90)">↺ Reset</button>
+      </div>
+      <div class="bar-wrap"><div class="bar-fill" id="tb4"></div></div>
+      <div class="notes-wrap"><label>Notes</label><textarea placeholder="Key words: formation conditions, fluid type, diagenesis, porosity evolution..."></textarea></div>
+    </div>
+
+    <div class="speak-block">
+      <div class="sb-top">
+        <div class="sb-num">05</div>
+        <div class="sb-content">
+          <div class="sb-stage">Conclusion — 60 seconds</div>
+          <div class="sb-prompt">Summarise the main findings of your research. What are the 2–3 most important takeaways? What does your work contribute to the field? What are the next steps or future research directions?</div>
+          <div class="sb-tip">💡 Tip: End with a strong, clear sentence. Don't introduce new ideas in the conclusion.</div>
+        </div>
+      </div>
+      <div class="sb-tags"><span class="sb-tag">In summary…</span><span class="sb-tag">This study demonstrates…</span><span class="sb-tag">The main contribution is…</span><span class="sb-tag">Further research is needed to…</span><span class="sb-tag">Thank you for your attention.</span></div>
+      <div class="timer-row"><div class="t-display" id="td5">1:00</div>
+        <button class="btn-t" onclick="startT(5,60)">▶ Start</button>
+        <button class="btn-t" onclick="resetT(5,60)">↺ Reset</button>
+      </div>
+      <div class="bar-wrap"><div class="bar-fill" id="tb5"></div></div>
+      <div class="notes-wrap"><label>Notes</label><textarea placeholder="Key words: 2–3 main findings, contribution, future work..."></textarea></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ Q&A PRACTICE ═══════════ -->
+<div class="section-label"><span>Q&amp;A Preparation</span></div>
+<div class="qa-wrap">
+  <h2>Likely Q&amp;A Questions — Prepare Your Answers</h2>
+  <p class="desc">These are the types of questions an American academic audience might ask after your talk. Write notes for each, then practise answering out loud in 30–60 seconds.</p>
+
+  <div class="qa-item">
+    <div class="qa-q">How do pre-salt travertines in Brazil differ from the ones found in Rome? Are they a good analogue?</div>
+    <div class="qa-hint">💡 Mention: formation environment, accessibility, diagenesis, similarities and key differences.</div>
+    <textarea placeholder="That's a great question. The main differences are... / While Roman travertines are... the pre-salt ones..."></textarea>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">What is the main practical application of this research? Could these travertines become significant oil reservoirs?</div>
+    <div class="qa-hint">💡 Mention: porosity, permeability, reservoir potential, exploration importance.</div>
+    <textarea placeholder="The practical implication of our research is... / Our data suggests that..."></textarea>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">Can you explain more about the conceptual models you proposed? What makes your model different from existing ones?</div>
+    <div class="qa-hint">💡 Mention: what the model proposes, what data supports it, how it differs from earlier models.</div>
+    <textarea placeholder="Our model proposes that... / Previous models assumed... however we found..."></textarea>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">What are the main limitations of your study?</div>
+    <div class="qa-hint">💡 It's important to acknowledge limitations honestly. Mention: sample size, access to subsurface data, resolution of methods.</div>
+    <textarea placeholder="One limitation of our study is... / We were not able to... / Further work is needed to..."></textarea>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">What are the next steps for this research?</div>
+    <div class="qa-hint">💡 Mention future plans confidently. Use: "We plan to… / The next phase will focus on… / We hope to…"</div>
+    <textarea placeholder="The next step in our research is... / We plan to... / We hope to be able to..."></textarea>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q">I didn't quite catch your point about [X]. Could you clarify?</div>
+    <div class="qa-hint">💡 Practise rephrasing. Use: "Of course. What I meant was… / Let me rephrase that… / In other words…"</div>
+    <textarea placeholder="Of course. What I meant was... / To put it another way..."></textarea>
+  </div>
+</div>
+
+<!-- ── ANSWER KEY ── -->
+<div class="answer-key">
+  <h2>Answer Key — Teacher's Reference</h2>
+  <div class="ak-grid">
+    <div class="ak-sec">
+      <h4>Exercise 1 — Matching</h4>
+      <ol>
+        <li><strong>G</strong> — reservoir</li>
+        <li><strong>F</strong> — diagenesis</li>
+        <li><strong>C</strong> — conceptual model</li>
+        <li><strong>A</strong> — travertine</li>
+        <li><strong>D</strong> — porosity</li>
+        <li><strong>E</strong> — analogue</li>
+        <li><strong>B</strong> — pre-salt layer</li>
+      </ol>
+    </div>
+    <div class="ak-sec">
+      <h4>Exercise 2 — Abstract gap fill</h4>
+      <ol>
+        <li><strong>travertines</strong></li>
+        <li><strong>pre-salt</strong></li>
+        <li><strong>carbonate rocks</strong></li>
+        <li><strong>distinguishes</strong></li>
+        <li><strong>precipitation</strong></li>
+        <li><strong>geothermal</strong></li>
+        <li><strong>analogue</strong></li>
+        <li><strong>conceptual models</strong></li>
+        <li><strong>reservoirs</strong></li>
+        <li><strong>porosity</strong></li>
+      </ol>
+    </div>
+    <div class="ak-sec">
+      <h4>Exercise 3 — Best phrase</h4>
+      <ol>
+        <li><strong>b)</strong> — opening / signposting structure</li>
+        <li><strong>c)</strong> — definition with accessible language</li>
+        <li><strong>a)</strong> — transition / signposting</li>
+        <li><strong>b)</strong> — highlighting findings</li>
+        <li><strong>a)</strong> — conclusion / main message</li>
+      </ol>
+    </div>
+    <div class="ak-sec">
+      <h4>Exercise 4 &amp; Speaking — Evaluation</h4>
+      <ul style="list-style:disc;">
+        <li>Use of formal/academic register</li>
+        <li>Correct use of passive where appropriate</li>
+        <li>Presentation phrases from the phrase bank</li>
+        <li>Clear structure: define → compare → data → conclude</li>
+        <li>Speaking: fluency, pace (not too fast), reaching the time target</li>
+        <li>Q&amp;A: direct answers, rephrasing when needed, "That's a good question" stall tactic</li>
+      </ul>
+      <p class="ak-note">For Exercise 4, accept any rewrite that uses formal language and the correct meaning.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end page -->
+<script>
+function norm(s){ return s.trim().toLowerCase().replace(/\s+/g,' '); }
+
+/* EX 1 */
+const a1={m1:'g',m2:'f',m3:'c',m4:'a',m5:'d',m6:'e',m7:'b'};
+function checkEx1(){
+  let ok=0;
+  for(const [id,ans] of Object.entries(a1)){
+    const el=document.getElementById(id);
+    const v=norm(el.value);
+    if(!v){el.className='sm';continue;}
+    const c=v===ans;
+    el.className=c?'sm ok':'sm err';
+    if(c)ok++;
+  }
+  showScore('sc1',ok,7);
+}
+
+/* EX 2 */
+const a2={
+  g1:['travertines'],
+  g2:['pre-salt','pre salt'],
+  g3:['carbonate rocks'],
+  g4:['distinguishes'],
+  g5:['precipitation'],
+  g6:['geothermal'],
+  g7:['analogue'],
+  g8:['conceptual models'],
+  g9:['reservoirs'],
+  g10:['porosity']
+};
+function checkEx2(){
+  let ok=0;
+  for(const [id,acc] of Object.entries(a2)){
+    const el=document.getElementById(id);
+    const v=norm(el.value);
+    if(!v){el.className=el.className.replace(/ ?(ok|err)/g,'');continue;}
+    const c=acc.includes(v);
+    el.className=el.className.replace(/ ?(ok|err)/g,'')+(c?' ok':' err');
+    if(c)ok++;
+  }
+  showScore('sc2',ok,10);
+}
+
+/* EX 3 */
+const a3={p1:'b',p2:'c',p3:'a',p4:'b',p5:'a'};
+function checkEx3(){
+  let ok=0;
+  for(const [n,a] of Object.entries(a3)){
+    const s=document.querySelector('input[name="'+n+'"]:checked');
+    if(s&&s.value===a)ok++;
+  }
+  showScore('sc3',ok,5);
+}
+
+function showScore(id,ok,total){
+  const bar=document.getElementById(id);
+  bar.style.display='block';
+  if(ok===total){bar.className='score-bar good';bar.textContent=ok+' / '+total+' — 🎉 Perfect!';}
+  else if(ok>=Math.ceil(total*0.6)){bar.className='score-bar partial';bar.textContent=ok+' / '+total+' — Good! Almost there.';}
+  else{bar.className='score-bar retry';bar.textContent=ok+' / '+total+' — Review and try again!';}
+}
+
+/* TIMERS */
+const T={};
+function startT(n,total){
+  if(T[n]&&T[n].on)return;
+  const disp=document.getElementById('td'+n);
+  const bar=document.getElementById('tb'+n);
+  const btn=document.querySelector('.speak-block:nth-child('+n+') .btn-t');
+  let s=total;
+  disp.className='t-display';
+  bar.style.width='100%';
+  bar.style.background='var(--accent)';
+  T[n]={on:true};
+  T[n].iv=setInterval(()=>{
+    s--;
+    const m=Math.floor(s/60), sec=s%60;
+    disp.textContent=m+':'+(sec<10?'0':'')+sec;
+    bar.style.width=(s/total*100)+'%';
+    if(s<=10){disp.className='t-display danger';bar.style.background='#E87070';}
+    if(s<=0){
+      clearInterval(T[n].iv); T[n].on=false;
+      disp.textContent='Done!'; disp.className='t-display done';
+      bar.style.width='0%';
+    }
+  },1000);
+}
+function resetT(n,total){
+  if(T[n]&&T[n].iv)clearInterval(T[n].iv);
+  if(T[n])T[n].on=false;
+  const disp=document.getElementById('td'+n);
+  const bar=document.getElementById('tb'+n);
+  const m=Math.floor(total/60), s=total%60;
+  disp.textContent=m+':'+(s<10?'0':'')+s;
+  disp.className='t-display';
+  bar.style.width='100%';
+  bar.style.background='var(--accent)';
+}
+</script>
+</body>
+</html>
